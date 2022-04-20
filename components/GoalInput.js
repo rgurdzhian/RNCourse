@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, View, TextInput, Button, Modal } from "react-native"
+import { StyleSheet, View, TextInput, Button, Modal, Image } from "react-native"
 
 const GoalInput = ({addGoalHandler, cancelGoalHandler, visible}) => {
 
@@ -17,13 +17,14 @@ const GoalInput = ({addGoalHandler, cancelGoalHandler, visible}) => {
     return (
         <Modal visible={visible} animationType="slide">
             <View style={styles.inputContainer}>
+                <Image source={require('../assets/images/goal.png')} style={styles.image}/>
                 <TextInput style={styles.textInput} placeholder='Your Course Goal!' onChangeText={goalInputHandler} value={enteredGoalText}/>
                 <View style={styles.buttonContainer}>
                     <View style={styles.button}>
-                        <Button title='Add Goal' onPress={onAddGoal} />
+                        <Button title='Cancel' onPress={cancelGoalHandler} color="#f31282"/>
                     </View>
                     <View style={styles.button}>
-                        <Button title='Cancel' onPress={cancelGoalHandler}/>
+                        <Button title='Add Goal' onPress={onAddGoal} color="#b180f0"/>
                     </View>
                 </View>
             </View> 
@@ -36,16 +37,22 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 24,
-        borderBottomWidth: 1,
-        borderColor: '#ccc',
-        padding: 16
+        padding: 16,
+        backgroundColor: '#311b6b'
+      },
+      image: {
+          width: 100,
+          height: 100,
+          margin: 20
       },
       textInput: {
         borderWidth: 1,
-        borderColor: '#ccc',
+        borderColor: '#e4d0ff',
+        backgroundColor: '#e4d0ff',
+        borderRadius: 6,
         width: '100%',
-        padding: 8
+        padding: 16,
+        color: '#120438'
       },
       buttonContainer: {
           flexDirection: 'row',
